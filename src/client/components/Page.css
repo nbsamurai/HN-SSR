@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 1em auto;
+  padding: 1em;
+}
+
+.is-striped {
+  background-color: rgba(233, 200, 147, 0.2);
+}
+
+.rtable {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+.rtable-row-header {
+  background-color: #ff6600;
+  display: flex;
+}
+
+.rtable-row {
+  width: 100%;
+  display: flex;
+  font-size: small;
+}
+
+.rtable-cell {
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 0.2em 0.4em;
+  overflow: hidden;
+  list-style: none;
+}
+
+.column-heading {
+  color: white;
+  /* padding: 1em; */
+  font-weight: bold;
+  text-align: start;
+  align-self: flex-end;
+}
+
+.comment-cell {
+  width: 8%;
+}
+
+.count-cell {
+  width: 6%;
+}
+
+.text-cell {
+  width: 80%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link-separator {
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.link-button {
+  background-color: transparent;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  color: #ff6600;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.divider {
+  border: 1px solid #ff6600;
+}
+
+.votearrow {
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  margin: 3px 2px 6px;
+  background: url('/public/grayarrow.gif') no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min-device-pixel-ratio: 2) {
+  .votearrow {
+    background-size: 10px;
+    background-image: url('/public/grayarrow2x.gif');
+  }
+}
+
+.rotate180 {
+  -webkit-transform: rotate(180deg); /* Chrome and other webkit browsers */
+  -moz-transform: rotate(180deg); /* FF */
+  -o-transform: rotate(180deg); /* Opera */
+  -ms-transform: rotate(180deg); /* IE9 */
+  transform: rotate(180deg); /* W3C complaint browsers */
+}
