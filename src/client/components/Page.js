@@ -1,7 +1,106 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPage } from '../actions';
-import './Page.css';
+// import './Page.css';
+
+// In-line Styles to support SSR
+
+const wrapper = {
+  width: '100%',
+  maxWidth: '1000px',
+  margin: '1em auto',
+  padding: '1em',
+  boxSizing: 'border-box',
+};
+
+const isStriped = {
+  backgroundColor: 'rgba(233, 200, 147, 0.2)',
+  boxSizing: 'border-box',
+};
+
+const rtable = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  margin: '0 0 3em 0',
+  padding: '0',
+  boxShadow: '0 0 40px rgba(0, 0, 0, 0.2)',
+  boxSizing: 'border-box',
+};
+
+const rtableRowHeader = {
+  backgroundColor: '#ff6600',
+  display: 'flex',
+  boxSizing: 'border-box',
+};
+
+const rtableRow = {
+  width: '100%',
+  display: 'flex',
+  fontSize: 'small',
+  boxSizing: 'border-box',
+};
+
+const rtableCell = {
+  boxSizing: 'border-box',
+  flexGrow: '1',
+  padding: '0.2em 0.4em',
+  overflow: 'hidden',
+  listStyle: 'none',
+  boxSizing: 'border-box',
+};
+
+const columnHeading = {
+  color: 'white',
+  /* padding: 1em, */
+  fontWeight: 'bold',
+  textAlign: 'start',
+  alignSelf: 'flex-end',
+  boxSizing: 'border-box',
+};
+
+const commentCell = {
+  width: '8%',
+  boxSizing: 'border-box',
+};
+
+const countCell = {
+  width: '6%',
+  boxSizing: 'border-box',
+};
+
+const textCell = {
+  width: '80%',
+  boxSizing: 'border-box',
+};
+
+const footerContainer = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  boxSizing: 'border-box',
+};
+
+const linkSeparator = {
+  color: '#ff6600',
+  fontWeight: 'bold',
+  boxSizing: 'border-box',
+};
+
+const linkButton = {
+  backgroundColor: 'transparent',
+  fontWeight: 'bold',
+  border: 'none',
+  cursor: 'pointer',
+  color: '#ff6600',
+  display: 'inline',
+  margin: '0',
+  padding: '0',
+  boxSizing: 'border-box',
+};
+
+const divider = {
+  border: '1px solid #ff6600',
+  boxSizing: 'border-box',
+};
 
 class Page extends Component {
   constructor(props) {
@@ -16,59 +115,55 @@ class Page extends Component {
   render() {
     return (
       <>
-        <div className='wrapper'>
-          <div className='rtable'>
-            <div className='rtable-row rtable-row-header'>
-              <div className='column-heading rtable-cell comment-cell'>
+        <div style={wrapper}>
+          <div style={rtable}>
+            <div style={{ ...rtableRow, ...rtableRowHeader }}>
+              <div style={{ ...columnHeading, ...rtableCell, ...commentCell }}>
                 Comments
               </div>
-              <div className='column-heading rtable-cell count-cell'>
+              <div style={{ ...columnHeading, ...rtableCell, ...countCell }}>
                 Vote Count
               </div>
-              <div className='column-heading rtable-cell count-cell'>
+              <div style={{ ...columnHeading, ...rtableCell, ...countCell }}>
                 UpVote
               </div>
-              <div className='column-heading rtable-cell text-cell'>
+              <div style={{ ...columnHeading, ...rtableCell, ...textCell }}>
                 New Details
               </div>
             </div>
             {this.props.page.hits.map((item, index) => (
               <div
                 key={item.objectID}
-                className={index % 2 ? 'rtable-row is-striped' : 'rtable-row'}
+                style={index % 2 ? { ...rtableRow, ...isStriped } : rtableRow}
               >
-                <div className='rtable-cell comment-cell'>
+                <div style={{ ...rtableCell, ...commentCell }}>
                   {item.num_comments}
                 </div>
-                <div className='rtable-cell count-cell'>{item.points}</div>
-                <div className='rtable-cell count-cell'>
+                <div style={{ ...rtableCell, ...countCell }}>{item.points}</div>
+                <div style={{ ...rtableCell, ...countCell }}>
                   {/* <button>vote</button> */}
                   <a style={{ cursor: 'pointer' }}>
-                    <div className='votearrow' title='upvote' />
+                    <div title='upvote' />
                   </a>
                 </div>
-                <div className='rtable-cell text-cell'>{`${item.title} by ${item.author}`}</div>
+                <div
+                  style={{ ...rtableCell, ...textCell }}
+                >{`${item.title} by ${item.author}`}</div>
               </div>
             ))}
           </div>
-          <div className='footer-container'>
+          <div style={footerContainer}>
             <div>
-              <button
-                className='link-button'
-                onClick={() => changePage('prev')}
-              >
+              <button style={linkButton} onClick={() => changePage('prev')}>
                 Previous
               </button>{' '}
-              <span className='link-separator'>|</span>{' '}
-              <button
-                className='link-button'
-                onClick={() => changePage('next')}
-              >
+              <span style={linkSeparator}>|</span>{' '}
+              <button style={linkButton} onClick={() => changePage('next')}>
                 Next
               </button>
             </div>
           </div>
-          <hr className='divider' />
+          <hr style={divider} />
         </div>
       </>
     );
