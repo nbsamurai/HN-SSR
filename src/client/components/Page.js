@@ -106,10 +106,23 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = { page: 0 };
+    this.changePage = this.changePage.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPage(this.state.page);
+  }
+  changePage(direction) {
+    if (this.state.page === 0 && direction === 'prev') {
+    } else {
+      if (direction === 'prev') {
+        this.props.fetchPage(this.state.page - 1);
+        this.setState({ page: this.state.page - 1 });
+      } else {
+        this.props.fetchPage(this.state.page + 1);
+        this.setState({ page: this.state.page + 1 });
+      }
+    }
   }
 
   render() {
@@ -154,11 +167,17 @@ class Page extends Component {
           </div>
           <div style={footerContainer}>
             <div>
-              <button style={linkButton} onClick={() => changePage('prev')}>
+              <button
+                style={linkButton}
+                onClick={() => this.changePage('prev')}
+              >
                 Previous
               </button>{' '}
               <span style={linkSeparator}>|</span>{' '}
-              <button style={linkButton} onClick={() => changePage('next')}>
+              <button
+                style={linkButton}
+                onClick={() => this.changePage('next')}
+              >
                 Next
               </button>
             </div>
@@ -173,4 +192,9 @@ const mapStateToProps = ({ page }) => ({
   page,
 });
 
+const loadData = (store) => {
+  return store.dispatch(fetchPage(0));
+};
+
+export { loadData };
 export default connect(mapStateToProps, { fetchPage })(Page);
