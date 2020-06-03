@@ -4,6 +4,7 @@
   "description": "Hacker News Application with SSR",
   "main": "index.js",
   "scripts": {
+    "start": "node build/bundle.js",
     "build": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:build-server": "webpack --config webpack.server.js --watch",
@@ -14,7 +15,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
-    "core-js": "^3.6.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
@@ -39,11 +39,7 @@
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
     "chart.js": "^2.9.3",
-    "css-loader": "^3.5.3",
-    "mini-css-extract-plugin": "^0.9.0",
     "react-chartjs-2": "^2.9.0",
-    "react-time-ago": "^5.0.8",
-    "style-loader": "^1.2.1",
     "webpack-cli": "^3.3.11"
   }
 }
