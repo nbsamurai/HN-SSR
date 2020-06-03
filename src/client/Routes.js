@@ -1,4 +1,3 @@
-import Home from './components/Home';
 import Page, { loadData } from './components/Page';
 
 export default [
