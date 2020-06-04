@@ -9,7 +9,11 @@
     "dev:build-server": "webpack --config webpack.server.js --watch",
     "dev:build-client": "webpack --config webpack.client.js --watch"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "SSR",
+    "redux"
+  ],
   "author": "Subramani Simhachalam",
   "license": "MIT",
   "dependencies": {

@@ -2,8 +2,8 @@
 # HN-SSR
 Hacker News app with SSR support 
 
-Webpack
-Babel
-Express
+Webpack,
+Babel,
+Express,
 Used CSS-in JS inline styles to support SSR
 
